@@ -13,8 +13,8 @@ h = 768
 
 
 
-img_dir='/home/pej/platform_yolo/NEW_CLASSIFIED/delete/balance'
-label_dir='/home/pej/platform_yolo/NEW_CLASSIFIED/delete/balance_label'
+img_dir='/home/pej/Desktop/alcohol_data'
+label_dir='/home/pej/Desktop/alcohol_label'
 
 print("디렉토리 생성")
 newdir = img_dir+"_enlightened/"

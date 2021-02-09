@@ -5,7 +5,7 @@ import sys, os, re
 
 
 # 개수를 셀 라벨 파일들이 있는 폴더
-total_dir='/home/pej/Desktop/code_test'
+total_dir='/home/pej/platform_yolo/[NEW_ORIGINAL]/deleted_whole_label'
 
 
 def count_bbox(folder):

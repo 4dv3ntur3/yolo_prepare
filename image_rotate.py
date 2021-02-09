@@ -14,7 +14,7 @@ img_dir='/home/pej/platform_yolo/NEW_CLASSIFIED/delete/balance'
 label_dir='/home/pej/platform_yolo/NEW_CLASSIFIED/delete/balance_label'
 
 print("디렉토리 생성")
-newdir = img_dir + "_rotated_180/"
+newdir = img_dir + "_rotated/"
 os.makedirs(newdir)
 
 
