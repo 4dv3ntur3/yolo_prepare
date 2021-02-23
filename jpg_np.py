@@ -2,15 +2,11 @@ import cv2
 import os, sys, re
 import numpy as np
 
-root='/home/pej/Desktop/alcohol_1407/'
-orig_dir='/home/pej/Desktop/alcohol_1407/obj'
-label_dir='/home/pej/Desktop/alcohol_1407/obj_label'
+orig_dir='/home/pej/Desktop/test_1000/images/test'
 
-print("디렉토리 생성")
-newdir = root + "compressed_1/"
-os.makedirs(newdir)
-
+size_dict = {}
 def load_images(folder):
+
     images = []
     image_names = []
 
@@ -20,54 +16,19 @@ def load_images(folder):
     for filename in filenames:
          if ".txt" not in filename:
             img = cv2.imread(os.path.join(folder, filename))
+
             if img is not None:
-                images.append(img)
-                image_names.append(filename)
+                # images.append(img)
+                # image_names.append(filename)
 
-            print(filename)
+                if img.shape[1] in size_dict:
+                    size_dict[img.shape[1]] += 1
 
-    return images, image_names
+                else:
+                    size_dict[img.shape[1]] = 1
+    return size_dict
 
-
-def load_labels(folder):
-    labels = []
-    label_names = []
-
-    filenames = os.listdir(folder)
-    filenames.sort()
-
-    for filename in filenames:
-        if ".jpg" not in filename and "classes" not in filename:  # 라벨 파일인 경우
-
-            # Obtain BB values from YOLOv3 annotation .txt file
-            gt = open(os.path.join(folder, filename), 'r')
-
-            bb_array = []
-            for line in gt:
-                # print(line)
-                vals = re.split('\s+', line.rstrip())
-                # print(vals)
-
-                # imgaug_vals = convertYolov3BBToImgaugBB(vals)
-                # # print (imgaug_vals)
-
-                # bb_array.append(ia.BoundingBox(x1 = imgaug_vals[1],
-                #                             y1 = imgaug_vals[2],
-                #                             x2 = imgaug_vals[3],
-                #                             y2 = imgaug_vals[4],
-                #                             label = imgaug_vals[0]))
-                if len(vals) == 5:
-                    bb_array.append(vals)
-
-            labels.append(bb_array)
-            label_names.append(filename)
-
-    return labels, label_names
-
-images, image_names = load_images(orig_dir)
-labels, label_names = load_labels(label_dir)
-
-result_folder = newdir
+print(load_images(orig_dir))
 
 
 '''
