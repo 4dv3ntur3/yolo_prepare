@@ -7,8 +7,6 @@ from random import uniform
 w = 1024
 h = 768
 
-
-
 img_dir='/home/pej/platform_yolo/NEW_CLASSIFIED/delete/big'
 label_dir='/home/pej/platform_yolo/NEW_CLASSIFIED/delete/big_label'
 
